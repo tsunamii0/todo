@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(32, 32, 32);
+    color: aliceblue;
+    font-size: 29px;
+    font-family: monospace;
+    align-items: center;
+}
+
+.inputlist {
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    width: 370px;
+    height: 39px;
+}
+
+.erroranim{
+    animation-name: erroranimation;
+    animation-duration: 0.5s;
+}
+
+li {
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@keyframes erroranimation {
+    25%{margin-left: 10px;}
+    50%{background-color: rgb(255, 140, 140); margin-left: -10px;}
+    100%{background-color: white; margin-left: 0px;}
+}
+
+.done {
+    text-decoration: line-through;
+    color: rgb(197, 197, 197);
+}
+
+.notdone {
+    text-decoration: none;
+    color: white;
+}
