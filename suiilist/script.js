@@ -1,5 +1,6 @@
 const input = document.querySelector('.inputlist')
 const list = document.querySelector('.todolist')
+const liHTML = document.getElementsByTagName('LI')
 
 document.addEventListener('keypress', addToList)
 
@@ -16,6 +17,9 @@ function createLi(textNode) {
     const li = document.createElement('li');
     li.appendChild(document.createTextNode(textNode));
     list.appendChild(li);
+    const lidel = document.createElement('p');
+    lidel.appendChild(document.createTextNode('x'));
+    li.appendChild(lidel)
 }
 function addToList(event){
     if(event.keyCode === Enter && input.value.length === 0){
@@ -33,6 +37,10 @@ function addToList(event){
     }
 }
 
+function utilityFunction() {
+    const parsingArr = JSON.parse(localStorage.get("todos"))
+}
+
 
 list.addEventListener('click', function(e) {
     if(e.target.tagName === 'LI'){
@@ -40,3 +48,8 @@ list.addEventListener('click', function(e) {
     }
 });
 
+list.addEventListener('click', function(e) {
+    if(e.target.tagName === 'P'){
+        e.target.parentNode.style.display='none';
+    }
+});

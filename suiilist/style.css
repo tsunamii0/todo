@@ -21,12 +21,25 @@ body {
     animation-duration: 0.5s;
 }
 
-li {
-    -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+ul {
+    display: flex;
+    flex-direction: column;
 }
+
+li {
+    width: 700px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+p {
+    display: inline;
+    float: right;
+    margin-top: -0px;
+}
+
 
 @keyframes erroranimation {
     25%{margin-left: 10px;}
