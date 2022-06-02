@@ -1,55 +1,37 @@
 const input = document.querySelector('.inputlist')
 const list = document.querySelector('.todolist')
-const liHTML = document.getElementsByTagName('LI')
 
 document.addEventListener('keypress', addToList)
 
-console.log(localStorage.getItem('tasks'))
+let fullList = []
 
-
-const tasksInLocalStorage = JSON.parse(localStorage.getItem('tasks')) || [];
-
-tasksInLocalStorage.forEach(element => {
-    createLi(element.value)
-});
 const Enter = 13
-function createLi(textNode) {
-    const li = document.createElement('li');
-    li.appendChild(document.createTextNode(textNode));
-    list.appendChild(li);
-    const lidel = document.createElement('p');
-    lidel.appendChild(document.createTextNode('x'));
-    li.appendChild(lidel)
-}
-function addToList(event){
-    if(event.keyCode === Enter && input.value.length === 0){
+
+function addToList(e){
+    if(e.keyCode === Enter && input.value.length === 0){
         console.log('sui')
         input.classList.add('erroranim')
         setTimeout(() => {
             input.classList.remove('erroranim')
         }, 500);
     }
-    if(event.keyCode === Enter && input.value.length > 0){
-        createLi(input.value);
-        tasksInLocalStorage.push({index: `${tasksInLocalStorage.length}`, value:input.value, isDone: false});
-        localStorage.setItem("tasks", JSON.stringify(tasksInLocalStorage));
-        input.value = "";
+    if(e.keyCode === Enter && input.value.length > 0){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(input.value));
+        list.appendChild(li);
+        fullList.push(input.value)
+        console.log(fullList)
+        input.value = ''
+        JSON.stringify(fullList)
+        localStorage.setItem('tasks', JSON.stringify(fullList));
     }
 }
 
-function utilityFunction() {
-    const parsingArr = JSON.parse(localStorage.get("todos"))
-}
+const tasksInLocalStorage = JSON.parse(localStorage.getItem('tasks'));
 
-
-list.addEventListener('click', function(e) {
-    if(e.target.tagName === 'LI'){
-        e.target.classList.toggle('done')
-    }
-});
-
-list.addEventListener('click', function(e) {
-    if(e.target.tagName === 'P'){
-        e.target.parentNode.style.display='none';
-    }
-});
+tasksInLocalStorage.forEach(element => {
+            const li = document.createElement('li');
+        li.appendChild(document.createTextNode(element));
+        list.appendChild(li);
+        fullList.push(element)
+        });

@@ -21,38 +21,8 @@ body {
     animation-duration: 0.5s;
 }
 
-ul {
-    display: flex;
-    flex-direction: column;
-}
-
-li {
-    width: 700px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-p {
-    display: inline;
-    float: right;
-    margin-top: -0px;
-}
-
-
 @keyframes erroranimation {
     25%{margin-left: 10px;}
     50%{background-color: rgb(255, 140, 140); margin-left: -10px;}
     100%{background-color: white; margin-left: 0px;}
-}
-
-.done {
-    text-decoration: line-through;
-    color: rgb(197, 197, 197);
-}
-
-.notdone {
-    text-decoration: none;
-    color: white;
 }
